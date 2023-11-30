@@ -3,27 +3,13 @@ import { NavBar } from "./components/NavBar";
 import { PokemonCard } from "./components/PokemonCard";
 
 const App = () => {
-  const attacks = [
-    {
-      name: "Thunderbolt",
-      damage: "90",
-      type: "Electric",
-      typeImage:
-        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAhFBMVEX70QD////7zgD/+ub83Wv70gD7zQD/+uj//vf///3+9ND//fT+9M7+8sb///z//vn++N783V/966n71CD82EH83mb96qP/++371jT//PD+9tf821X97bH944T955L+77v84oH84Xb82Ur84HD71jr96Jv84Hv96J7+8cH96qb+77j95pNLBvnSAAALJUlEQVR4nO2da1ujPBCGIYqutlV7UNtitUXXw+7//38vthQSSEKYeQbqe+3zcS+XcJfJaWYyieL/u6KhX0Bc/wh/vv4RQnQ1uht/zp432/fd+fR+977dPM8+x+vRVR+NCxNejr+26Vui9ooqFf+wTN8fxpeyryBH+PiyySKTy6bvv8i2f+QwZQjPZvfzVjaTcz59uBN5Fzzh48su6URXUUavT4/w9wETrr4yEl1FufgAGyyScPW1YOEVkBdvH8gviSOcTAF4BaRKP2HvBSJ8fE5QeAVktDnDvBqEcH0P+3wao0qvES8HIJws8HgF5PLlBAgnSym+PeOczcgknLxJ8kEYWYRrMfs0GJes/sggXL32wbdnnDJWAXTCv33x7Rk35J0WlfB63idgjphMeiW82fXLt2e8H/VH+Bn1D/itP30RDvABD1L3N30QrnvugQZiMpYn/D0c355xI004HRYwR8x+SRJeDmihpZJu/pxOhJMT4MulOo2pXQgfTgMwR3yWIdyeCmCO+CpBOPgYo0tlt2jCG/GNYEfNQ9dwgYSj+dBETQXuqMIIVycIGEVhzrggwrOhWRwKmhhDCFdDk7ikQr5iAOEqGZrErQDEdsLbk+yDhZIVn/BqOTSFV/PWdXgrYXpi82Bdb1zCwfbzoVJTHuHA+90Qte2J/YSfpw+YIz7RCc9+AmAUXazJhKc8T+hKfAOqj5C8X1IEsRAzGiF5S69eLs866nLMQvSNNm7CO3qbnT1+MbdHKLcf1U3IaDIhED7z7DRxesOdhByvjPIObnateYTqvishz3FIMVPmDsY5KzoIr3jtUcx0w518HY4bByFzOaoIkXemmUaRY4FqJ2S3NoCZRsoeJbYTshczFDPdshu1jqdWQv6OgjKa8ib9yDXv2wh/ARbcFDNlN6psLlQbIWLXSzHTHbtV22BjIWQs1ypRzJQfvLON4RbCDAA4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", // Replace with the actual image URL
-    },
-    // Add more attack objects as needed
-  ];
-
   return (
     <div className="App">
       <NavBar />
       <div className="background">
-        <PokemonCard
-          title="test"
-          subtitle="pop"
-          image="https://heatherketten.files.wordpress.com/2018/03/my_charmander.gif"
-          buttonLabel="click"
-        />
+        <PokemonCard 
+          title="Charmander" 
+          image="https://heatherketten.files.wordpress.com/2018/03/my_charmander.gif" />
       </div>
     </div>
   );

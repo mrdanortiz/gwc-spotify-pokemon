@@ -1,16 +1,16 @@
-export const PokemonCard = ({ title, subtitle, image, buttonLabel }) => {
+export const PokemonCard = (props) => {
   return (
     <div className="custom-card">
       <div class="nameimageinfo redorange">
         {/* <!-- Name and basic stats --> */}
         <table class="nameheaders">
           <tr>
-            <td class="name">Charmander</td>
+            <td class="name">{props.title}</td>
           </tr>
         </table>
 
         {/* <!-- Image and description --> */}
-        <img src={image} />
+        <img src={props.image} alt="card drawing" />
         <br />
         {/* <!-- Border around the animal's information per requirement --> */}
         <div class="infoonly">
@@ -18,7 +18,7 @@ export const PokemonCard = ({ title, subtitle, image, buttonLabel }) => {
           <p class="description">Lizard Pokémon. Length: 2'0", Weight: 19 lbs.</p>
 
           <div style={{ display: "flex", flexDirection: "column", alignContent: "space-between" }}>
-            <div style={{alignSelf: "flex-start"}}>
+            <div style={{ alignSelf: "flex-start" }}>
               {/* <!-- Attacks --> */}
               <table class="stats">
                 <tr>
@@ -56,7 +56,7 @@ export const PokemonCard = ({ title, subtitle, image, buttonLabel }) => {
               {/* <!-- "interesting fact" --> */}
             </div>
 
-            <div style={{alignSelf: "flex-end"}}>
+            <div style={{ alignSelf: "flex-end" }}>
               <ul>
                 <li class="italicize">
                   Obviously prefers hot places. If it gets caught in the rain, steam is said to spout from the tip of
